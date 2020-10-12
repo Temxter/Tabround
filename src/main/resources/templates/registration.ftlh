@@ -1,6 +1,6 @@
-<#import "part/mainWrapper.ftlh" as c>
+<#import "part/mainWrapper.ftlh" as w>
 <#import "part/loginPart.ftlh" as l>
 
-<@c.wrapper title="Registration">
+<@w.wrapper title="Registration">
 <@l.login isLogin=false/>
-</@c.wrapper>
+</@w.wrapper>

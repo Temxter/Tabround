@@ -1,12 +1,8 @@
-<#import "part/mainWrapper.ftlh" as c>
+<#import "part/mainWrapper.ftlh" as w>
+<#import "part/loginPart.ftlh" as l>
 
-<@c.wrapper title="Messages">
-    <div>
-        <form action="/logout" method="post">
-            <input type="hidden" name="_csrf" value="${_csrf.token}">
-            <input type="submit" value="Sign Out">
-        </form>
-    </div>
+<@w.wrapper title="Messages">
+    <@l.logout/>
     <#include "include/messageList.ftlh"/>
 
-</@c.wrapper>
+</@w.wrapper>

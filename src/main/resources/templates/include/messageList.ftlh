@@ -7,12 +7,23 @@
     <input type="text" name="tag" id="tag">
     <button type="submit">Submit</button>
 </form>
+<form method="get" action="/messages">
+    <input type="text" name="filter" value="${RequestParameters.filter!}">
+    <input type="submit" value="Search">
+</form>
 <ol>
     <#list messages as message>
         <li>
-            <p>id: ${message.id}
-                message: ${message.text}
-                tag: ${message.tag}</p>
+            <p>id: ${message.id};
+                message: ${message.text};
+                tag: ${message.tag};
+                author:
+                <#if message.author??>
+                    <strong>${message.author.username}</strong>
+                <#else>
+                    <strong>Unknown</strong>
+                </#if>
+            </p>
         </li>
     <#else >
         <p>No messages</p>
