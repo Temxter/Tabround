@@ -6,6 +6,7 @@
     <title>${title}</title>
 </head>
 <body>
+    <h1>Tabround</h1>
     <#nested>
 </body>
 </html>
