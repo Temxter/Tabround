@@ -3,6 +3,7 @@
 
 <@w.wrapper title="Messages">
     <@l.logout/>
+    <h4><a href="/users">User list</a></h4>
     <#include "include/messageList.ftlh"/>
 
 </@w.wrapper>
