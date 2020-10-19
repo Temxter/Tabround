@@ -1,21 +1,17 @@
 package com.skorina.tabround.controller;
 
-import com.skorina.tabround.domain.Roles;
 import com.skorina.tabround.domain.User;
-import com.skorina.tabround.repository.UserRepository;
+import com.skorina.tabround.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
-
 @Controller
 public class LoginController {
-
     @Autowired
-    private UserRepository userRepository;
+    private RegistrationService registrationService;
 
     @GetMapping("/login")
     public String loginForm() {
@@ -34,15 +30,13 @@ public class LoginController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        User userFromDatabase = userRepository.findByUsername(user.getUsername());
-        if (userFromDatabase != null) {
+        boolean isUserCreated = registrationService.addUser(user);
+        if (!isUserCreated) {
             model.addAttribute("usernameError", "User exists!");
             return "registration";
         }
-
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Roles.USER));
-        userRepository.save(user);
         return "redirect:/";
     }
+
+
 }
